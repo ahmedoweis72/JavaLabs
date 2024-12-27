@@ -67,17 +67,21 @@ public class Main {
                     while (true) {
                         System.out.print("Enter Book ID: ");
                         String bookId = scanner.nextLine();
-                        scanner.nextLine();
+                        if (library.isExist(bookId)==false) {
                         System.out.print("Enter Book Title: ");
                         String bookTitle = scanner.nextLine();
                         System.out.print("Enter Book Author: ");
                         String bookAuthor = scanner.nextLine();
+                            
+                        
                         if (library.isId(bookId) && library.isString(bookAuthor) && library.isString(bookTitle)) {
                             library.addItems(new Book(bookId, bookTitle, bookAuthor));
                             System.out.println("Book added successfully.");
                             break;
                         } else {
                             System.out.println("Somthing Wrong Cheak your Inputs");
+                        }}else{
+                            System.out.println("This Id Is Exist");
                         }
 
                     }
@@ -87,7 +91,7 @@ public class Main {
                         System.out.println("Enter Magazine ID: ");
                         String MagazineId = scanner.nextLine();
 
-                        if (library.isId(MagazineId)) {
+                        if (library.isId(MagazineId)&&library.isExist(MagazineId)==false) {
                             System.out.print("Enter Magazine Title: ");
                             String MagazineTitle = scanner.nextLine();
                             if (library.isString(MagazineTitle)) {
@@ -155,8 +159,9 @@ public class Main {
                         c.setEmail(scanner.next());
                         System.out.println("Enter Your Name :");
                         c.setName(scanner.next());
-                        if (library.isId(c.getId())&&library.isEmail(c.getEmail())&&library.isString(c.getName())) {
+                        if (library.isId(c.getId())&&library.isEmail(c.getEmail())&&library.isString(c.getName())&&!library.isExistClient(c.getId())) {
                             library.addClient(c);
+                            System.out.println("Added Successfuly");
                             break;
                         }else{
                             System.out.println("Somthing wrong Enter Valid Values");
