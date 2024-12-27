@@ -173,6 +173,22 @@ public class Library {
         String regex = "^[0-9]+$";
         return Pattern.matches(regex, id);
     }
+    public boolean isExist(String id) {
+        for (LibraryItem item : itemList) {
+            if (id.equals(item.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean isExistClient(String id) {
+        for (Clients item : clients) {
+            if (id.equals(item.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
     public boolean isString(String string) {
         String regex = "^[a-zA-Zs.,!?'-]*$";
         return Pattern.matches(regex, string);
@@ -182,4 +198,5 @@ public class Library {
         String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$";
             return Pattern.matches(regex, email);
 
-}}
+}
+}
